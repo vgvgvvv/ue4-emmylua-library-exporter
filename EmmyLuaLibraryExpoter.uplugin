@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "EmmyLuaLibraryExpoter",
+	"Description": "A simple tool for export library for emmy lua",
+	"Category": "Other",
+	"CreatedBy": "resetoter",
+	"CreatedByURL": "www.resetoter.cn",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "EmmyLuaLibraryExpoter",
+			"Type": "Developer",
+			"LoadingPhase": "Default"
+		}
+	]
+}
