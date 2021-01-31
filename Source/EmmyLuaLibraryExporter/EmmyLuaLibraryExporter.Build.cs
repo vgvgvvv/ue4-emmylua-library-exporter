@@ -2,15 +2,15 @@
 
 using UnrealBuildTool;
 
-public class EmmyLuaLibraryExpoter : ModuleRules
+public class EmmyLuaLibraryExporter : ModuleRules
 {
-	public EmmyLuaLibraryExpoter(ReadOnlyTargetRules Target) : base(Target)
+	public EmmyLuaLibraryExporter(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
 		
 		PublicIncludePaths.AddRange(
 			new string[] {
-				"EmmyLuaLibraryExpoter/Public"
+				"EmmyLuaLibraryExporter/Public"
 				// ... add public include paths required here ...
 			}
 			);
@@ -18,7 +18,7 @@ public class EmmyLuaLibraryExpoter : ModuleRules
 		
 		PrivateIncludePaths.AddRange(
 			new string[] {
-				"EmmyLuaLibraryExpoter/Private",
+				"EmmyLuaLibraryExporter/Private",
 				// ... add other private include paths required here ...
 			}
 			);
@@ -40,6 +40,7 @@ public class EmmyLuaLibraryExpoter : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"Json"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

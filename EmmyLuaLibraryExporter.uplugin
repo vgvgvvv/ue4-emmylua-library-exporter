@@ -2,7 +2,7 @@
 	"FileVersion": 3,
 	"Version": 1,
 	"VersionName": "1.0",
-	"FriendlyName": "EmmyLuaLibraryExpoter",
+	"FriendlyName": "EmmyLuaLibraryExporter",
 	"Description": "A simple tool for export library for emmy lua",
 	"Category": "Other",
 	"CreatedBy": "resetoter",
@@ -15,7 +15,7 @@
 	"Installed": false,
 	"Modules": [
 		{
-			"Name": "EmmyLuaLibraryExpoter",
+			"Name": "EmmyLuaLibraryExporter",
 			"Type": "Developer",
 			"LoadingPhase": "Default"
 		}

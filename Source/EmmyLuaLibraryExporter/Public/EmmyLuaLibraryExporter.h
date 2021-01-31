@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "ModuleManager.h"
 
-class FEmmyLuaLibraryExpoterModule : public IModuleInterface
+class FEmmyLuaLibraryExporterModule : public IModuleInterface
 {
 public:
 
