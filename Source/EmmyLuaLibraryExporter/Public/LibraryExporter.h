@@ -1,6 +1,34 @@
 #pragma once
 #include "JsonObject.h"
 
+#include "LibraryExporter.generated.h"
+
+USTRUCT()
+struct FFunctionInfo
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	TMap<FString, FString> ParamTypes;
+
+	UPROPERTY()
+	FString ReturnType;
+};
+
+USTRUCT()
+struct FFunctionInfoGroup
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	FString Name;
+
+	UPROPERTY()
+	TArray<FFunctionInfo> Group;
+
+};
+
+
 class EMMYLUALIBRARYEXPORTER_API FLibraryExporter
 {
 public:
@@ -16,5 +44,4 @@ private:
 
 	static void ExportClassFunctionsJson(UStruct* Class, TSharedPtr<FJsonObject> ClassJson);
 
-	static void ExportSingleFunction(UFunction* Function, TSharedPtr<FJsonObject> FunctionJson);
 };

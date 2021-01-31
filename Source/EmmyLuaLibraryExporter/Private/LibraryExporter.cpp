@@ -4,6 +4,7 @@
 
 #include "Casts.h"
 #include "Class.h"
+#include "JsonObjectConverter.h"
 #include "UnrealType.h"
 #include "UObjectHash.h"
 
@@ -77,20 +78,70 @@ void FLibraryExporter::ExportClassPropertiesJson(UStruct* Class, TSharedPtr<FJso
 
 void FLibraryExporter::ExportClassFunctionsJson(UStruct* Class, TSharedPtr<FJsonObject> ClassJson)
 {
+	
+	
+	TMap<FString, FFunctionInfoGroup> FunctionGroupMap;
+	for (TFieldIterator<UFunction> FunctionIt(Class); FunctionIt; ++FunctionIt)
+	{
+		auto FunctionName = FunctionIt->GetName();
+		auto FunctionGroup = FunctionGroupMap.Find(FunctionName);
+
+		if(FunctionGroup == nullptr)
+		{
+			FunctionGroupMap.Add(FunctionName, FFunctionInfoGroup());
+			FunctionGroup = FunctionGroupMap.Find(FunctionName);
+		}
+		
+		FunctionGroup->Name = FunctionName;
+		FFunctionInfo FunctionInfo;
+		for(TFieldIterator<UProperty> ParamIt(*FunctionIt); ParamIt; ++ParamIt)
+		{
+			auto ParamName = ParamIt->GetNameCPP();
+			auto ParamType = ParamIt->GetCPPType();
+			if(!ParamIt->HasAnyPropertyFlags(CPF_ReturnParm))
+			{
+				FunctionInfo.ParamTypes.Add(ParamName, ParamType);
+			}else
+			{
+				FunctionInfo.ReturnType = ParamType;
+			}
+		}
+
+		FunctionGroup->Group.Add(FunctionInfo);
+	}
+
+	if(FunctionGroupMap.Num() == 0)
+	{
+		return;
+	}
+
 	auto FunctionsGroupJson = MakeShared<FJsonObject>();
 	ClassJson->SetObjectField("Functions", FunctionsGroupJson);
-	for (TFieldIterator<UFunction> Iterator(Class); Iterator; ++Iterator)
-	{
-		auto Name = Iterator->GetName();
-		auto FunctionObjectJson = MakeShared<FJsonObject>();
-		FunctionsGroupJson->SetObjectField(Name, FunctionObjectJson);
 
-		ExportSingleFunction(*Iterator, FunctionObjectJson);
+	for(auto& Pair : FunctionGroupMap)
+	{
+		auto GroupInfo = MakeShared<FJsonObject>();
+		FunctionsGroupJson->SetObjectField(Pair.Key, GroupInfo);
+
+		TArray<TSharedPtr<FJsonValue>> FunctionInfos;
+		for(FFunctionInfo& FunctionInfo : Pair.Value.Group)
+		{
+			auto FunctionInfoObject = MakeShared<FJsonObject>();
+			FunctionInfoObject->SetStringField("ReturnType", FunctionInfo.ReturnType);
+
+			auto ParamObject = MakeShared<FJsonObject>();
+			FunctionInfoObject->SetObjectField("Params", ParamObject);
+
+			for(auto& ParamPair : FunctionInfo.ParamTypes)
+			{
+				ParamObject->SetStringField(ParamPair.Key, ParamPair.Value);
+			}
+
+			FunctionInfos.Add(MakeShared<FJsonValueObject>(FunctionInfoObject));
+		}
+
+		GroupInfo->SetArrayField("Overrides", FunctionInfos);
+		
 	}
 }
 
-
-void FLibraryExporter::ExportSingleFunction(UFunction* Function, TSharedPtr<FJsonObject> FunctionJson)
-{
-	
-}

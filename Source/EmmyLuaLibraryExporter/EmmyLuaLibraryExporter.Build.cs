@@ -40,7 +40,8 @@ public class EmmyLuaLibraryExporter : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				"Json"
+				"Json",
+				"JsonUtilities"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
