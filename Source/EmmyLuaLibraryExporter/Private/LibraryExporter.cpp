@@ -19,6 +19,20 @@ TSharedPtr<FJsonObject> FLibraryExporter::ExportJson()
 }
 
 
+FString FLibraryExporter::ExportJsonString()
+{
+	using FJsonObjectPtr = TSharedPtr<FJsonObject>;
+	using FJsonWriterRef = TSharedRef<TJsonWriter<>>;
+	using FJsonReaderRef = TSharedRef<TJsonReader<>>;
+	
+	TSharedPtr<FJsonObject> libraryJson = ExportJson();
+	FString txtLibrary;
+	FJsonWriterRef Writer = TJsonWriterFactory<>::Create(&txtLibrary);
+	FJsonSerializer::Serialize(libraryJson.ToSharedRef(), Writer);
+
+	return txtLibrary;
+}
+
 void FLibraryExporter::ExportEnumJson(TSharedPtr<FJsonObject> Json)
 {
 	TArray<UObject*> Enums;
@@ -85,6 +99,7 @@ void FLibraryExporter::ExportClassFunctionsJson(UStruct* Class, TSharedPtr<FJson
 	{
 		auto FunctionName = FunctionIt->GetName();
 		auto FunctionGroup = FunctionGroupMap.Find(FunctionName);
+		auto IsStatic = FunctionIt->HasAllFunctionFlags(EFunctionFlags::FUNC_Static);
 
 		if(FunctionGroup == nullptr)
 		{
@@ -93,6 +108,7 @@ void FLibraryExporter::ExportClassFunctionsJson(UStruct* Class, TSharedPtr<FJson
 		}
 		
 		FunctionGroup->Name = FunctionName;
+		FunctionGroup->IsStatic = IsStatic;
 		FFunctionInfo FunctionInfo;
 		for(TFieldIterator<UProperty> ParamIt(*FunctionIt); ParamIt; ++ParamIt)
 		{
@@ -123,8 +139,12 @@ void FLibraryExporter::ExportClassFunctionsJson(UStruct* Class, TSharedPtr<FJson
 		auto GroupInfo = MakeShared<FJsonObject>();
 		FunctionsGroupJson->SetObjectField(Pair.Key, GroupInfo);
 
+		auto FunctionGroup = Pair.Value;
+
+		GroupInfo->SetBoolField("IsStatic", FunctionGroup.IsStatic);
+		
 		TArray<TSharedPtr<FJsonValue>> FunctionInfos;
-		for(FFunctionInfo& FunctionInfo : Pair.Value.Group)
+		for(FFunctionInfo& FunctionInfo : FunctionGroup.Group)
 		{
 			auto FunctionInfoObject = MakeShared<FJsonObject>();
 			FunctionInfoObject->SetStringField("ReturnType", FunctionInfo.ReturnType);
@@ -139,7 +159,6 @@ void FLibraryExporter::ExportClassFunctionsJson(UStruct* Class, TSharedPtr<FJson
 
 			FunctionInfos.Add(MakeShared<FJsonValueObject>(FunctionInfoObject));
 		}
-
 		GroupInfo->SetArrayField("Overrides", FunctionInfos);
 		
 	}

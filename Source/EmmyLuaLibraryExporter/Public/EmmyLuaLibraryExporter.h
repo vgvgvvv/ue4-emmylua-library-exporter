@@ -3,6 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
+#include "Commands.h"
 #include "ModuleManager.h"
 
 class FEmmyLuaLibraryExporterModule : public IModuleInterface

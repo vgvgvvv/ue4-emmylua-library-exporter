@@ -24,6 +24,9 @@ struct FFunctionInfoGroup
 	FString Name;
 
 	UPROPERTY()
+	bool IsStatic;
+
+	UPROPERTY()
 	TArray<FFunctionInfo> Group;
 
 };
@@ -32,7 +35,10 @@ struct FFunctionInfoGroup
 class EMMYLUALIBRARYEXPORTER_API FLibraryExporter
 {
 public:
+
 	static TSharedPtr<FJsonObject> ExportJson();
+	static FString ExportJsonString();
+
 
 private:
 

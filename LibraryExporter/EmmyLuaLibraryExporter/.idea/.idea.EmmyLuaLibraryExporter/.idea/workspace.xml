@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2803678f-e22d-49cb-acf3-8c5c635b0a91" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/EmmyLuaLibraryExporter/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EmmyLuaLibraryExporter/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Private/EmmyLuaLibraryExporter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Private/EmmyLuaLibraryExporter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Private/LibraryExporter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Private/LibraryExporter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Public/EmmyLuaLibraryExporter.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Public/EmmyLuaLibraryExporter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Public/LibraryExporter.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Public/LibraryExporter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +21,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5179DD1B-79F0-47D0-AC65-7ED8A725EFC1/80/4060edfd/JToken.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -73,6 +81,7 @@
       <workItem from="1612142266192" duration="31000" />
       <workItem from="1612142313889" duration="206000" />
       <workItem from="1612142546485" duration="357000" />
+      <workItem from="1612148263717" duration="4752000" />
     </task>
     <servers />
   </component>
