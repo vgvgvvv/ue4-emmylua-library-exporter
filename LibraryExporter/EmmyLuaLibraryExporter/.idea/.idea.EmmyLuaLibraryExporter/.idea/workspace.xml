@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2803678f-e22d-49cb-acf3-8c5c635b0a91" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmmyLuaLibraryExporter/EmmyLuaLibraryExporter.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EmmyLuaLibraryExporter/EmmyLuaLibraryExporter.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmmyLuaLibraryExporter/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EmmyLuaLibraryExporter/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +21,7 @@
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/EmmyLuaLibraryExporter/EmmyLuaLibraryExporter.csproj" />
+      <option value="$PROJECT_DIR$/EmmyLuaLibraryExporter/Program.cs" />
       <option value="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" />
     </changedPaths>
   </component>
@@ -35,6 +37,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -66,13 +70,16 @@
       <option name="presentableId" value="Default" />
       <updated>1612090511050</updated>
       <workItem from="1612090525569" duration="784000" />
+      <workItem from="1612142266192" duration="31000" />
+      <workItem from="1612142313889" duration="206000" />
+      <workItem from="1612142546485" duration="357000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -84,8 +91,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

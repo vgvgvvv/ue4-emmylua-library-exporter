@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 
 namespace EmmyLuaLibraryExporter.LuaExporter
 {
-    public static partial class EmmyLuaExport
+    public static class EmmyLuaExport
     {
 
         public static string ExportTypeDefinesLuaName = "ExportTypeDefines";
@@ -41,6 +41,7 @@ namespace EmmyLuaLibraryExporter.LuaExporter
                 return;
             }
             // TODO 导出Enum
+            
         }
 
     }
