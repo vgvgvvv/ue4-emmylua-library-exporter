@@ -45,6 +45,19 @@ void FLibraryExporter::ExportLibrary(const FString& ExePath, const FString& Outp
 	FPlatformProcess::CreateProc(*ExePath, *Params, true, false, false, nullptr, 0, nullptr, nullptr);
 }
 
+void FLibraryExporter::ExportLibrary(const FString& OutputPath)
+{
+	FString exePath = FPaths::ProjectPluginsDir() + TEXT("EmmyLuaLibraryExporter/LibraryExporter/Binaries/EmmyLuaLibraryExporter.exe");
+	ExportLibrary(exePath, OutputPath);
+}
+
+
+void FLibraryExporter::ExportLibrary()
+{
+	FString savePath = FPaths::ProjectSavedDir() + TEXT("LuaHint");
+	ExportLibrary(savePath);
+}
+
 void FLibraryExporter::ExportEnumJson(TSharedPtr<FJsonObject> Json)
 {
 	TArray<UObject*> Enums;

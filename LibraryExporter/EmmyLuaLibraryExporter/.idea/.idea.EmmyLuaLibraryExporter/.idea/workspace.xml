@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2803678f-e22d-49cb-acf3-8c5c635b0a91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EmmyLuaLibraryExporter/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EmmyLuaLibraryExporter/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Private/LibraryExporter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Private/LibraryExporter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Public/LibraryExporter.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Source/EmmyLuaLibraryExporter/Public/LibraryExporter.h" afterDir="false" />
     </list>
@@ -81,7 +78,7 @@
       <workItem from="1612142266192" duration="31000" />
       <workItem from="1612142313889" duration="206000" />
       <workItem from="1612142546485" duration="357000" />
-      <workItem from="1612148263717" duration="9147000" />
+      <workItem from="1612148263717" duration="9487000" />
     </task>
     <servers />
   </component>
