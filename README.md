@@ -11,6 +11,7 @@ A Simple Tool To Export Emmy Lua Library From UE4
 
 ```
 // 导出Library到Saved文件夹下，用户需要自己添加到菜单中，或者采用其他的方式调用即可
+// 默认路径为Saved/LuaHint.zip，将其加入到EmmyLuaLibrary的列表中，即可使用
 FLibraryExporter::ExportLibrary();
 ```
 
