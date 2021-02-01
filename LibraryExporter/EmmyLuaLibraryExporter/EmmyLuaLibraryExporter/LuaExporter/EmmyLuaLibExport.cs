@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -20,17 +21,30 @@ namespace EmmyLuaLibraryExporter.LuaExporter
             var jsonTxt = File.ReadAllText(jsonInfoPath);
             JObject jObject = JObject.Parse(jsonTxt);
 
-            StringBuilder defineTypeBuilder = new StringBuilder();
-            GenLuaClassDefines(jObject["Classes"] as JObject, defineTypeBuilder);
-            GenLuaEnumDefines(jObject["Enumes"] as JObject, defineTypeBuilder);
+            GenLuaClassDefines(jObject["Classes"] as JObject, outputDir);
+            GenLuaEnumDefines(jObject["Enumes"] as JObject, outputDir);
+
+            var hintFile = Path.Combine(new DirectoryInfo(outputDir)?.Parent?.FullName, "LuaHint.zip");
+
+            if (File.Exists(hintFile))
+            {
+                File.Delete(hintFile);
+            }
+            ZipFile.CreateFromDirectory(outputDir, hintFile);
+
+            Directory.Delete(outputDir, true);
             
-            File.WriteAllText(Path.Combine(outputDir, ExportTypeDefinesLuaName + ".lua"), defineTypeBuilder.ToString());
-            
+            // var luafiles = Directory.GetFiles(outputDir, "*.lua");
+            // foreach (var luafile in luafiles)
+            // {
+            //     File.Delete(luafile);
+            // }
+
         }
 
         #region Class Generate
 
-        private static void GenLuaClassDefines(JObject classesObj, StringBuilder builder)
+        private static void GenLuaClassDefines(JObject classesObj, string outputDir)
         {
             if (classesObj == null)
             {
@@ -41,14 +55,23 @@ namespace EmmyLuaLibraryExporter.LuaExporter
             {
                 var name = jProperty.Name;
                 var value = jProperty.Value.ToObject<JObject>();
-                GenSingleLuaClass(name, value, builder);
-                builder.AppendLine("\n--------------------------------------------------------\n");
+                GenSingleLuaClass(name, value, outputDir);
             }
         }
 
-        private static void GenSingleLuaClass(string className, JObject classObj, StringBuilder builder)
+        private static void GenSingleLuaClass(string className, JObject classObj, string outputDir)
         {
-            builder.AppendLine($"---@class {className}");
+            StringBuilder builder = new StringBuilder();
+            var superClassName = classObj["Parent"]?.ToObject<string>();
+
+            if (superClassName != null)
+            {
+                builder.AppendLine($"---@class {className} : {superClassName}");
+            }
+            else
+            {
+                builder.AppendLine($"---@class {className}");
+            }
             
             var properties = classObj["Properties"].ToObject<JObject>();
             GenSingleLuaClassProperties(properties, builder);
@@ -60,6 +83,13 @@ namespace EmmyLuaLibraryExporter.LuaExporter
             {
                 GenSingleLuaClassFunctions(className, functions, builder);
             }
+
+            if (!Directory.Exists(outputDir))
+            {
+                Directory.CreateDirectory(outputDir);
+            }            
+            File.WriteAllText(Path.Combine(outputDir, className + ".lua"), builder.ToString());
+
         }
 
         private static void GenSingleLuaClassProperties(JObject properties, StringBuilder builder)
@@ -144,7 +174,7 @@ namespace EmmyLuaLibraryExporter.LuaExporter
 
         #region Enum Generate
 
-        private static void GenLuaEnumDefines(JObject enumsObj, StringBuilder builder)
+        private static void GenLuaEnumDefines(JObject enumsObj, string outputDir)
         {
             if (enumsObj == null)
             {
@@ -155,13 +185,13 @@ namespace EmmyLuaLibraryExporter.LuaExporter
             {
                 var name = jProperty.Name;
                 var value = jProperty.Value.ToObject<JObject>();
-                GenSingleLuaEnumDefine(name, value, builder);
-                builder.AppendLine("\n--------------------------------------------------------\n");
+                GenSingleLuaEnumDefine(name, value, outputDir);
             }
         }
 
-        private static void GenSingleLuaEnumDefine(string enumName, JObject enumObj, StringBuilder builder)
+        private static void GenSingleLuaEnumDefine(string enumName, JObject enumObj, string outputDir)
         {
+            StringBuilder builder = new StringBuilder();
             builder.AppendLine($"---@class {enumName}");
             var values = enumObj.Properties();
             foreach (var value in values)
@@ -170,6 +200,12 @@ namespace EmmyLuaLibraryExporter.LuaExporter
             }
 
             builder.AppendLine($"{enumName} = {{}}");
+            
+            if (!Directory.Exists(outputDir))
+            {
+                Directory.CreateDirectory(outputDir);
+            }      
+            File.WriteAllText(Path.Combine(outputDir, enumName + ".lua"), builder.ToString());
         }
 
         #endregion

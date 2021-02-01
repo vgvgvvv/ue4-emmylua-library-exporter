@@ -38,6 +38,7 @@ public:
 
 	static TSharedPtr<FJsonObject> ExportJson();
 	static FString ExportJsonString();
+	static void ExportLibrary(const FString& ExePath, const FString& OutputPath);
 
 
 private:

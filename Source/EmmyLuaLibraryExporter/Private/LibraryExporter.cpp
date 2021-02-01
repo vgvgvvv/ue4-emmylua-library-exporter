@@ -4,7 +4,9 @@
 
 #include "Casts.h"
 #include "Class.h"
+#include "FileHelper.h"
 #include "JsonObjectConverter.h"
+#include "Paths.h"
 #include "UnrealType.h"
 #include "UObjectHash.h"
 
@@ -31,6 +33,16 @@ FString FLibraryExporter::ExportJsonString()
 	FJsonSerializer::Serialize(libraryJson.ToSharedRef(), Writer);
 
 	return txtLibrary;
+}
+
+
+void FLibraryExporter::ExportLibrary(const FString& ExePath, const FString& OutputPath)
+{
+	FString JsonPath = FPaths::ProjectSavedDir() + "emmy_lua_library.json";
+	FString JsonTxt = ExportJsonString();
+	FFileHelper::SaveStringToFile(JsonTxt, *JsonPath);
+	FString Params = FString::Printf(TEXT("in=%s out=%s"), *JsonPath, *OutputPath);
+	FPlatformProcess::CreateProc(*ExePath, *Params, true, false, false, nullptr, 0, nullptr, nullptr);
 }
 
 void FLibraryExporter::ExportEnumJson(TSharedPtr<FJsonObject> Json)
@@ -69,9 +81,15 @@ void FLibraryExporter::ExportClassJson(TSharedPtr<FJsonObject> Json)
 	for(auto Object : Structs)
 	{
 		auto Class = Cast<UStruct>(Object);
+		auto SuperClass = Class->GetSuperStruct();
 		auto ClassObject = MakeShared<FJsonObject>();
 		ClassGroup->SetObjectField(Class->GetName(), ClassObject);
 
+		if(SuperClass)
+		{
+			ClassObject->SetStringField("Parent", SuperClass->GetName());
+		}
+		
 		ExportClassPropertiesJson(Class, ClassObject);
 		ExportClassFunctionsJson(Class, ClassObject);
 	}
