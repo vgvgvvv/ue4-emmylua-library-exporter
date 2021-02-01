@@ -7,6 +7,8 @@
 #include "Commands.h"
 #include "ModuleManager.h"
 
+class FMenuBuilder;
+
 class FEmmyLuaLibraryExporterModule : public IModuleInterface
 {
 public:
@@ -14,4 +16,7 @@ public:
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
+
+private:
+	TSharedPtr<class FUICommandList> PluginCommands;
 };

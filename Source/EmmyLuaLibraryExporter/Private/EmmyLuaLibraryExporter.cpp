@@ -2,9 +2,13 @@
 
 #include "EmmyLuaLibraryExporter.h"
 
-#include "MultiBoxExtender.h"
+
+
+#include "LevelEditor.h"
+#include "MultiBoxBuilder.h"
 
 #define LOCTEXT_NAMESPACE "FEmmyLuaLibraryExporterModule"
+
 
 
 void FEmmyLuaLibraryExporterModule::StartupModule()
