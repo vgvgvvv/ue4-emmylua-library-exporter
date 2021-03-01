@@ -4,7 +4,14 @@
     <projectFile>EmmyLuaLibraryExporter/EmmyLuaLibraryExporter.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2803678f-e22d-49cb-acf3-8c5c635b0a91" name="Default Changelist" comment="" />
+    <list default="true" id="2803678f-e22d-49cb-acf3-8c5c635b0a91" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Binaries/EmmyLuaLibraryExporter.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Binaries/EmmyLuaLibraryExporter.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binaries/EmmyLuaLibraryExporter.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Binaries/EmmyLuaLibraryExporter.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EmmyLuaLibraryExporter/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EmmyLuaLibraryExporter/LuaExporter/EmmyLuaLibExport.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/ExportTypeDefines.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/library.json" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +22,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/BC542A5C-3AD0-4C34-A080-02E941B52719/329/FileStream.Windows.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5179DD1B-79F0-47D0-AC65-7ED8A725EFC1/80/4060edfd/JToken.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -76,6 +82,7 @@
       <workItem from="1612142313889" duration="206000" />
       <workItem from="1612142546485" duration="357000" />
       <workItem from="1612148263717" duration="9804000" />
+      <workItem from="1614585966518" duration="376000" />
     </task>
     <servers />
   </component>

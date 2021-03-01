@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\dieseldong\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="D:\Documents\MyProjects\TestProjects\TestResetCoreUnreal\RemoteControl\Plugins\EmmyLuaLibraryExporter\LibraryExporter\EmmyLuaLibraryExporter" t="IncludeFlat">
+    <e p="D:\Documents\PUBGM\trunk\Survive\Plugins\EmmyLuaLibraryExporter\LibraryExporter\EmmyLuaLibraryExporter" t="IncludeFlat">
       <e p="_ReSharper.Caches\Rider203.EmmyLuaLibraryExporter.00" t="ExcludeRecursive" />
       <e p="EmmyLuaLibraryExporter" t="IncludeRecursive">
         <e p=".gitignore" t="Include" />

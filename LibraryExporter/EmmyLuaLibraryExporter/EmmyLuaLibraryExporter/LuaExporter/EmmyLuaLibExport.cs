@@ -120,12 +120,13 @@ namespace EmmyLuaLibraryExporter.LuaExporter
                
                 foreach (var param in paramInfos.Properties())
                 {
-                    builder.AppendLine($"---@param {param.Name} {param.Value.ToObject<string>()}");
+                    var paramClassName = param.Value.ToObject<string>();
+                    builder.AppendLine($"---@param {param.Name} {paramClassName.GetSafeClassName()}");
                 }
 
                 if (!string.IsNullOrEmpty(returnType))
                 {
-                    builder.AppendLine($"---@return {returnType}");
+                    builder.AppendLine($"---@return {returnType.GetSafeClassName()}");
                 }
 
                 for (int i = 1; i < overrides.Length - 1; i++)
@@ -159,7 +160,8 @@ namespace EmmyLuaLibraryExporter.LuaExporter
                         {
                             argsBuilder.Append(", ");
                         }
-                        argsBuilder.Append(paramInfo.Key);
+
+                        argsBuilder.Append(paramInfo.Key.GetSafeClassName());
                         isFirst = false;
                     }
                 }
@@ -209,7 +211,12 @@ namespace EmmyLuaLibraryExporter.LuaExporter
         }
 
         #endregion
-       
 
+        private static string GetSafeClassName(this string className)
+        {
+            return className.Replace("*", "").Replace("&", "");
+        }
+    
+    
     }
 }
