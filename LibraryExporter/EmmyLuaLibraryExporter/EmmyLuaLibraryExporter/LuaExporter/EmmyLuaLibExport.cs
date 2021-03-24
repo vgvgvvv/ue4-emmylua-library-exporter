@@ -98,7 +98,11 @@ namespace EmmyLuaLibraryExporter.LuaExporter
             {
                 var propertyName = property.Key;
                 var propertyType = property.Value;
-                builder.AppendLine($"---@field {propertyName} {propertyType}");
+
+                var propertyTypeName = propertyType.ToString();
+                
+                
+                builder.AppendLine($"---@field {propertyName} {propertyTypeName.GetSafeClassName(true)}");
             }
         }
 
@@ -121,12 +125,12 @@ namespace EmmyLuaLibraryExporter.LuaExporter
                 foreach (var param in paramInfos.Properties())
                 {
                     var paramClassName = param.Value.ToObject<string>();
-                    builder.AppendLine($"---@param {param.Name} {paramClassName.GetSafeClassName()}");
+                    builder.AppendLine($"---@param {param.Name} {paramClassName.GetSafeClassName(true)}");
                 }
 
                 if (!string.IsNullOrEmpty(returnType))
                 {
-                    builder.AppendLine($"---@return {returnType.GetSafeClassName()}");
+                    builder.AppendLine($"---@return {returnType.GetSafeClassName(true)}");
                 }
 
                 for (int i = 1; i < overrides.Length - 1; i++)
@@ -161,7 +165,7 @@ namespace EmmyLuaLibraryExporter.LuaExporter
                             argsBuilder.Append(", ");
                         }
 
-                        argsBuilder.Append(paramInfo.Key.GetSafeClassName());
+                        argsBuilder.Append(paramInfo.Key);
                         isFirst = false;
                     }
                 }
@@ -194,11 +198,17 @@ namespace EmmyLuaLibraryExporter.LuaExporter
         private static void GenSingleLuaEnumDefine(string enumName, JObject enumObj, string outputDir)
         {
             StringBuilder builder = new StringBuilder();
-            builder.AppendLine($"---@class {enumName}");
+            builder.AppendLine($"---@class {enumName.GetSafeClassName()}");
             var values = enumObj.Properties();
             foreach (var value in values)
             {
-                builder.AppendLine($"---@field {value.Name}");
+                var enumValueName = value.Name;
+                if (enumValueName.Contains(":"))
+                {
+                    enumValueName = enumValueName.Substring(enumValueName.LastIndexOf(':') + 1);
+                }
+                
+                builder.AppendLine($"---@field {enumValueName}");
             }
 
             builder.AppendLine($"{enumName} = {{}}");
@@ -212,9 +222,36 @@ namespace EmmyLuaLibraryExporter.LuaExporter
 
         #endregion
 
-        private static string GetSafeClassName(this string className)
+        private static string GetSafeClassName(this string className, bool removePrefix = false)
         {
-            return className.Replace("*", "").Replace("&", "");
+            
+            var result = className.Replace("*", "").Replace("&", "");
+            
+            if (result == "bool")
+            {
+                return "boolean";
+            }
+            else if (result == "FString")
+            {
+                return "string";
+            }
+            else if (result == "int8" || result == "int16" || result == "int32" || result == "int64" ||
+                     result == "uint8" || result == "uint16" || result == "uint32" || result == "uint64" ||
+                     result == "float" || result == "double")
+            {
+                return "number";
+            }
+
+            if (removePrefix)
+            {
+                if (result.StartsWith("I") || result.StartsWith("U") || result.StartsWith("A") ||
+                    result.StartsWith("F") || result.StartsWith("T") || result.StartsWith("E"))
+                {
+                    result = result.Substring(1);
+                }
+            }
+                
+            return result;
         }
     
     

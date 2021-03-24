@@ -1,5 +1,5 @@
 #pragma once
-#include "JsonObject.h"
+#include "Dom/JsonObject.h"
 
 #include "LibraryExporter.generated.h"
 

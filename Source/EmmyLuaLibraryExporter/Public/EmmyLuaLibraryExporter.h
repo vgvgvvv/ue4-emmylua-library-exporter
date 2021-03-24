@@ -4,8 +4,8 @@
 
 #include "CoreMinimal.h"
 
-#include "Commands.h"
-#include "ModuleManager.h"
+#include "Framework/Commands/Commands.h"
+#include "Modules/ModuleManager.h"
 
 class FMenuBuilder;
 

@@ -2,13 +2,13 @@
 
 
 
-#include "Casts.h"
-#include "Class.h"
-#include "FileHelper.h"
+#include "Templates/Casts.h"
+#include "UObject/Class.h"
+#include "Misc/FileHelper.h"
 #include "JsonObjectConverter.h"
-#include "Paths.h"
-#include "UnrealType.h"
-#include "UObjectHash.h"
+#include "Misc/Paths.h"
+#include "UObject/UnrealType.h"
+#include "UObject/UObjectHash.h"
 
 TSharedPtr<FJsonObject> FLibraryExporter::ExportJson()
 {
@@ -116,6 +116,7 @@ void FLibraryExporter::ExportClassPropertiesJson(UStruct* Class, TSharedPtr<FJso
 	{
 		auto Name = Iterator->GetNameCPP();
 		auto PropertyClass = Iterator->GetCPPType();
+		
 		PropertiesGroupJson->SetStringField(Name, PropertyClass);
 	}
 }

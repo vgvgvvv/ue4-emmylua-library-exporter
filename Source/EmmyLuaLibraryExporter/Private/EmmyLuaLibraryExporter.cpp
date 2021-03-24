@@ -5,7 +5,6 @@
 
 
 #include "LevelEditor.h"
-#include "MultiBoxBuilder.h"
 
 #define LOCTEXT_NAMESPACE "FEmmyLuaLibraryExporterModule"
 
